@@ -4,6 +4,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import {useAuth0 } from "@auth0/auth0-react"
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button"
+
 const MainNav = () => (
   <Nav className="mr-auto">
     <Nav.Link
@@ -22,14 +23,7 @@ const MainNav = () => (
     >
       Profile
     </Nav.Link>
-    <Nav.Link
-      as={RouterNavLink}
-      to="/external-api"
-      exact
-      activeClassName="router-link-exact-active"
-    >
-      External API
-    </Nav.Link>
+   
   </Nav>
 );
 
@@ -47,7 +41,6 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="md">
       <Container>
-        <Navbar.Brand as={RouterNavLink} className="logo" to="/" />
         <MainNav />
         <AuthNav />
       </Container>

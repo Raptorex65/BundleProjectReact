@@ -35,3 +35,28 @@ export const ExternalApi = () => {
 };
 
 export default ExternalApi;
+
+
+Navbar.js:
+
+ <Nav.Link
+      as={RouterNavLink}
+      to="/external-api"
+      exact
+      activeClassName="router-link-exact-active"
+    >
+      External API
+    </Nav.Link>
+
+app.js:
+
+          <ProtectedRoute path="/external-api" component={ExternalApi} />
+
+views/index.js:
+
+import ExternalApi from "./external-api";
+
+
+
+
+Logo        <Navbar.Brand as={RouterNavLink} className="logo" to="/" />

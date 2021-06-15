@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ProtectedRoute from "./auth/protected-route";
 import { NavBar, Footer } from "./components";
-import { Home, Profile, ExternalApi } from "./views";
+import { Home, Profile } from "./views";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./app.css";
 
@@ -15,7 +15,6 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <ProtectedRoute path="/profile" component={Profile} />
-          <ProtectedRoute path="/external-api" component={ExternalApi} />
         </Switch>
       </Container>
       <Footer/>
