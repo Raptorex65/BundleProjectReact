@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
+
 import { Container, Nav, Navbar } from "react-bootstrap";
 import {useAuth0 } from "@auth0/auth0-react"
 import LoginButton from "./login-button";
@@ -17,13 +18,21 @@ const MainNav = () => (
     </Nav.Link>
     <Nav.Link
       as={RouterNavLink}
-      to="/profile"
+      to="/about"
       exact
       activeClassName="router-link-exact-active"
     >
-      Profile
+      About
     </Nav.Link>
-   
+    <Nav.Link
+      as={RouterNavLink}
+      to="/bundle"
+      exact
+      activeClassName="router-link-exact-active"
+    >
+      Bundle
+    </Nav.Link>
+
   </Nav>
 );
 
