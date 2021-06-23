@@ -4,10 +4,7 @@ const About = () => {
 
     return (
         <div>
-            <p>
-                IT IS RELATED TO ABOUT PAGE
-    
-            </p>
+            <h3> IT IS RELATED TO ABOUT PAGE </h3>
 
         </div>
 
