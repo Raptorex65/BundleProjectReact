@@ -1,11 +1,14 @@
-import React, {Fragment} from "react";
-import BodySlider from "../components/slider";
+import React from "react";
+
+import BodySlider from "../components/slider"; 
 
 const Home = () =>  (
-  <Fragment>
-  <BodySlider/>
-  <hr/>
-</Fragment>
+      <>
+      <p>
+        HOMEPAGE DESIGN
+        <BodySlider/>
+      </p>
+      </>
 )
 
 export default Home;
