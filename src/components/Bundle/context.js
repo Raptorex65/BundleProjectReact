@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import useFetch from './useFetch'
-export const API_ENDPOINT = `http://localhost:3000/items`
+export const API_ENDPOINT = `http://localhost:3000/bundle`
 const AppContext = React.createContext()
 
 

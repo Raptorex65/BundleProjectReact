@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const API_ENDPOINT = `http://localhost:3000/items`
+const API_ENDPOINT = `http://localhost:3000/bundle`
 
 const useFetch = (urlParams) => {
   const [isLoading, setIsLoading] = useState(true)
  // const [error, setError] = useState({ show: false, msg: '' })
-  const [data, setData] = useState([])
+  const [data, setData] = useState()
   
   const fetchItems = async () => {
     let url = `http://localhost:3000/items`

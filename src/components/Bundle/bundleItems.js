@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from './context'
-import { Card, Button } from 'react-bootstrap'
+//import { Card, Button } from 'react-bootstrap'
 
 
 const BundleItems = () => {
@@ -16,29 +16,20 @@ const BundleItems = () => {
       {items.map((item) => {
         console.log(item)
         //const { imdbID: id, Poster: poster, Title: title, Year: year } = movie
-        const { item_id:id, Name: name, Category: category, Description: description } = item
-
+        const { Id:id, Name: name, Description: description } = item
+        
         return (
-
-          <Link to={`/items/${id}`} key={id} className='movie'>
-           <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Title>{category}</Card.Title>
-
-          <Card.Text>
-            {description}
-          </Card.Text>
-          <Button variant="primary">
-            <Link to='/' className='btn'>
-          Back to Homepage
-        </Link>
-            </Button>
-        </Card.Body>
-      </Card>
-
+          <Link to={`/bundle/${id}`} key={id} className='movie'>
+            <article>
+              <img src='' alt={name} />
+              <div className='movie-info'>
+                <h4 className='title'>{name}</h4>
+               <p>{description}</p>
+              </div>
+            </article>
           </Link>
+
+          
         )
       })}
     </section>  
