@@ -1,40 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { useGlobalContext } from './context'
-//import { Card, Button } from 'react-bootstrap'
+import SingleItem from './singleitem'
 
+export default function BundleItems() {
+  const { items, loading } = useGlobalContext()
 
-const BundleItems = () => {
-  const { items, isLoading } = useGlobalContext()
-
-  if (isLoading) {
+  if (loading) {
     return <div className='loading'></div>
   }
-
-    return (
-<section className='movies'>
-      {items.map((item) => {
-        console.log(item)
-        //const { imdbID: id, Poster: poster, Title: title, Year: year } = movie
-        const { Id:id, Name: name, Description: description } = item
         
-        return (
-          <Link to={`/bundle/${id}`} key={id} className='movie'>
-            <article>
-              <img src='' alt={name} />
-              <div className='movie-info'>
-                <h4 className='title'>{name}</h4>
-               <p>{description}</p>
-              </div>
-            </article>
-          </Link>
-
-          
-        )
-      })}
-    </section>  
+  if (items.length < 1) {
+    return (
+      <h2 className='section-title'>
+        no cocktails matched your search criteria
+      </h2>
+    )
+  }
+  return (
+  <section className='section'>
+      <h2 className='section-title'>Bundle Items</h2>
+      <div className='cocktails-center'>
+        {items.map((item) => {
+          return <SingleItem key={item.id} {...item} />
+        })}
+      </div>
+    </section>
   )
-          }
+      }
 
-export default BundleItems;
 
