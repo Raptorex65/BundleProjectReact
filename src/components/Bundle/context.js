@@ -1,40 +1,35 @@
     // Context kullanirken value'ye atadigimiz degisken degerlerini global olarak her yerde kullanabilme 
     //sansina sahip oluyoruz..yani her component icin propsla ugrasmadan
-import React, { useState, useContext, useEffect, useCallback } from 'react';
-export const API_ENDPOINT = `http://localhost:3000/item`;
-
-
+import React, { useState, useContext, useEffect } from 'react';
+//import axios from 'axios';
+const url = `http://localhost:3000/items`
 const AppContext = React.createContext();
 
-const AppProvider = ({ children }) => {
+  const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
   const [query, setQuery] = useState('');
-  
-  const fetchItems = useCallback(
-    async () => {
-  setLoading(true)
-      const url = `http://localhost:3000/items`
+  //const [isError, setIsError] = useState(false);
+const fetchMovies = async () => {
+    setLoading(true);
     try {
-      const response = await fetch(`${url}${query}`)
+      const response = await fetch(url);
       const data = await response.json();
+      console.log(data)
       setItems(data);
 
-      
-      setLoading(false)
+    setLoading(false);
     } catch (error) {
-      console.log("error")
+      console.log(error);
     }
-   }, [query]) 
-  
+  };
+
   useEffect(() => {
-    fetchItems(`${API_ENDPOINT}&s=${query}`);
-  }, [query, fetchItems]);
+    fetchMovies(`${url}&s=${query}`);
+  }, [query]);
 
   return (
-    <AppContext.Provider
-      value={{ loading, items, query, setQuery }}
-    >
+    <AppContext.Provider value={{ loading, items, setItems, query, setQuery }}>
       {children}
     </AppContext.Provider>
   );

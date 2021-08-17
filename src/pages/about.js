@@ -1,17 +1,60 @@
-import React from "react";
-import BodySlider from "../components/slider"; 
+import React from 'react'
+import styled from 'styled-components'
+import aboutImg from '../assets/donation-pickup.webp'
 
 const About = () => {
+  return (
+    <main>
+      <Wrapper className='about-page section section-center'>
+        <img src={aboutImg} alt='nice desk' />
+        <article>
+          <div className='title'>
+            <h2>our story</h2>
+            <div className='underline'></div>
+          </div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
+            accusantium sapiente tempora sed dolore esse deserunt eaque
+            excepturi, delectus error accusamus vel eligendi, omnis beatae.
+            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
+            dolore, obcaecati incidunt sequi blanditiis est exercitationem
+            molestiae delectus saepe odio eligendi modi porro eaque in libero
+            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
+            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
+            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
+            iste.
+          </p>
+        </article>
 
-    return (
-        <div>
-            <h3> IT IS RELATED TO ABOUT PAGE </h3>
-            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam omnis fugit tenetur, dolor unde libero quibusdam sapiente, molestias repellendus voluptates odit nobis tempora vel laborum corporis esse officia illo beatae. Libero ducimus error possimus repellendus asperiores officiis exercitationem laudantium saepe?</p>
-                <BodySlider/>
-
-        </div>
-
-    )
+      </Wrapper>
+    </main>
+  )
 }
-
-export default About;
+const Wrapper = styled.section`
+  display: grid;
+  gap: 2rem;
+  img {
+    width: 100%;
+    display: block;
+    border-radius: var(--radius);
+    height: 500px;
+    object-fit: cover;
+  }
+  p {
+    line-height: 2;
+    max-width: 45em;
+    margin: 0 auto;
+    margin-top: 2rem;
+    color: var(--clr-grey-5);
+  }
+  .title {
+    text-align: left;
+  }
+  .underline {
+    margin-left: 0;
+  }
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`
+export default About

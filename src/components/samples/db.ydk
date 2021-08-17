@@ -1,0 +1,102 @@
+ // Get a reference to the database service
+    const storage = firebase.database();
+    const storageRef = storage.ref();
+
+// Create a child reference
+const imagesRef = storageRef.child('images');
+
+// Child references can also take paths delimited by '/'
+const spaceRef = storageRef.child('images/space.jpg');
+// spaceRef now points to "images/space.jpg"
+// 'file' comes from the Blob or File API
+imagesRef.put(file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+});
+
+import { firebase, db } from './db_firebase'
+
+const [image, setImage] = useState(null);
+
+
+const onImageChange = (e) => {
+  
+    const reader = new FileReader();
+    let file = e.target.files[0]; // get the supplied file
+    // if there is a file, set image to that file
+    if (file) {
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          console.log(file);
+          setImage(file);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    // if there is no file, set image back to null
+    } else {
+      setImage(null);
+    }
+  };
+
+ const uploadToFirebase = () => {
+   
+    if (image) {
+      const storageRef = firebase.ref();
+      const imageRef = storageRef.child(image.name);
+      imageRef.put(image).then(() => {
+        alert("Image uploaded successfully to Firebase.");
+    });
+    } else {
+      alert("Please upload an image first.");
+    }
+  };
+
+
+
+
+  // BASIC WRITE OPERATION
+  function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+    //BASIC READ OPERATION
+    const starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+
+
+for (const file of files) {
+    firebase
+      .storage()
+      .ref('images')
+      .child(file.name)
+      .put(file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+      })
+ }
+ 
+var fileUpload = document.getElementById("fileUpload");
+fileUpload.on(‘change’, function(evt) {
+  var firstFile = evt.target.file[0]; // get the first file uploaded
+  var uploadTask = storageRef.put(firstFile);
+});
+
+
+formData.foreach((obj) => {
+    formdb.collection("FormDonation").add({
+    itemName: obj.name,
+    description: obj.desc,
+    address: obj.address,
+    canton: obj.canton,
+    city: obj.city,
+    postal_code: obj.postal_code,
+    email: obj.email,
+    phone: obj.phone
+    })
+  })
+   

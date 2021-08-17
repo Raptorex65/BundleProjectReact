@@ -1,20 +1,24 @@
 import React from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
-
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from 'react-router-dom'
+//import MakeDonation from './makedonation'
+import { Nav, Navbar } from "react-bootstrap";
 import {useAuth0 } from "@auth0/auth0-react"
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button"
+import SignupButton from './signup-button';
+import logo from '../assets/bundle-logo.jpg'
+
 
 const MainNav = () => (
-  <Nav className="mr-auto">
+  <Nav className="nav-center">
     <Nav.Link
       as={RouterNavLink}
       to="/"
       exact
       activeClassName="router-link-exact-active"
     >
-      Home
+      Home 
     </Nav.Link>
     <Nav.Link
       as={RouterNavLink}
@@ -26,13 +30,20 @@ const MainNav = () => (
     </Nav.Link>
     <Nav.Link
       as={RouterNavLink}
-      to="/bundle"
+      to="/form"
       exact
       activeClassName="router-link-exact-active"
     >
-      Bundle
+      Forms
     </Nav.Link>
-
+<Nav.Link
+      as={RouterNavLink}
+      to="/profile"
+      exact
+      activeClassName="router-link-exact-active"
+    >
+      Profile
+    </Nav.Link>
   </Nav>
 );
 
@@ -42,18 +53,25 @@ const AuthNav = () => {
   return (
     <Nav classname="justify-content-end">
       {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
+        <SignupButton/>
+
     </Nav>
   )
 }
 
 const NavBar = () => {
   return (
+
     <Navbar bg="light" expand="md">
-      <Container>
+      <div className='nav-header'>
+          <Link to='/'>
+            <img src={logo} alt='bundle-logo' width={65} height={65} />
+          </Link>
+      </div>    
         <MainNav />
         <AuthNav />
-      </Container>
     </Navbar>
+
   );
 };
 
