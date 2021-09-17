@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import aboutImg from '../assets/donation-pickup.webp'
-
+//import Slider from '../components/review_slider/slider'
 const About = () => {
   return (
     <main>

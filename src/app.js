@@ -26,7 +26,6 @@ const App = () => {
           </Route>
           <Route exact path='/items/:id' children={<SingleDetail />}/>
           <ProtectedRoute path="/profile" component={Profile} />
-          <ProtectedRoute path="/forms" component={Forms} />
         </Switch>
         <Footer/>
     </Router>

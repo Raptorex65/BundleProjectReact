@@ -87,6 +87,14 @@ const onImageChange = (e) => {
 //----------------------------------//
 
 Get An Image URL
+
+    //BASIC READ OPERATION
+    const starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+
 // The getDownloadURL() method will return a promise, 
 // and the actual file URL will be returned to the then() callback function specified in the parameter imgUrl.
 firebase
@@ -190,3 +198,20 @@ database.ref("products").on("child_changed", (snaphot) => {
 database.ref("products").on("child_added", (snaphot) => {
     console.log(snaphot.key, snaphot.val());
 })
+
+
+============DATABASE'E VERI EKLEMEK ICIN OLSA GEREK==============
+
+formData.foreach((obj) => {
+    formdb.collection("FormDonation").add({
+    itemName: obj.name,
+    description: obj.desc,
+    address: obj.address,
+    canton: obj.canton,
+    city: obj.city,
+    postal_code: obj.postal_code,
+    email: obj.email,
+    phone: obj.phone
+    })
+  })
+   

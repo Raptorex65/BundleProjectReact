@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { Link } from 'react-router-dom'
-//import MakeDonation from './makedonation'
 import { Nav, Navbar } from "react-bootstrap";
 import {useAuth0 } from "@auth0/auth0-react"
 import LoginButton from "./login-button";

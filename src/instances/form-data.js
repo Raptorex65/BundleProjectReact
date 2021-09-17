@@ -9,21 +9,35 @@ import uuid from 'uuid'
 import "firebase/database";
 
 const schema = yup.object().shape({
-  itemName: yup.string().required(),
-  category: yup.number().required(),
-  description: yup.string().required(),
-  address: yup.string().required(),
-  canton: yup.number().required(),
-  city: yup.string().required(),
-  postal_code: yup.number().required(), 
-  phone: yup.number().required(),
-  email: yup.string().required('Email is required').email('Email is invalid'),
+  itemName: yup.string().required("Name of the donated item required"),
+  category: yup.number().required("Category is required"),
+  description: yup.string().required("Description is required"),
+  address: yup.string().required("Address is required"),
+  canton: yup.number().required("Canton is required"),
+  city: yup.string().required("City is required"),
+  postal_code: yup
+    .number()
+    .required("Postal code is required")
+    .min(4, "Postal code must be at least 4 characters")
+    .max(4, "Postal code must not exceed 4 characters"),
+  phone: yup
+    .number()
+    .required("Phone number is required")
+    .min(9, "Phone number must be at least 9 characters")
+    .max(13, "Phone number must not exceed 13 characters"),
+  email: yup.string().required("Email is required").email("Email is invalid"),
+  acceptTerms: Yup.bool().oneOf([true], "Accept Terms is required"),
 });
 
 const FormFinal = () => {
-const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema)
-})
+const {
+  register,
+  handleSubmit,
+  reset,
+  formState: { errors },
+} = useForm({
+  resolver: yupResolver(schema),
+});
 
 const onSubmit = (data) => { 
 //YUP validation check

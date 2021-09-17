@@ -2,28 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import 'firebase/storage';
+import firebase from './firebase-config'
+import {storage} from "./firebase-config";
 
-const GetImage = () => {
-    firebase
-      .storage()
-      .ref('images/golden-retriever.jpg')
-      .getDownloadURL()
-      .then(imgUrl => {
-        console.log(imgUrl);
-  });
-
-}
-
-const SingleItem = (item) => {
+const SingleItem = () => {
+firebase.storage()
+    .ref('formimages')
+    .listAll()
+    .then(snap => {
+      snap.items.forEach(itemRef => {
+        itemRef.getDownloadURL().then(imgUrl => {
+          let image = imgUrl[0]
+          console.log(imgUrl)
+        });
+      })
+    })  
   return (
     <Wrapper>
       <div className='container'>
-// Image i firebaseden 
-        <img src={image} alt={name} />
-        <Link to={`/items/${id}`} className='link'>
-          <FaSearch />
-        </Link>
+        <img src={image} alt={item.name} />
       </div>
       <footer>
         <h5>{item.name}</h5>

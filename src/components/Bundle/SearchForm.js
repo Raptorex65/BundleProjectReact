@@ -1,9 +1,7 @@
-import React from 'react'
-import { useGlobalContext } from './context'
+import React, {useState} from 'react'
 
-export default function SearchForm() {
-  const { query, setQuery } = useGlobalContext()
-
+export default function SearchForm(props) {
+  
   return (
     <section className='section search'>
       <form className='search-form' onSubmit={(e) => e.preventDefault()}>
@@ -12,8 +10,8 @@ export default function SearchForm() {
             className='form-control'
             id='name'
             placeholder="SEARCH"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={props.query}
+            onChange={(e) => props.setQuery(e.target.value)}
           />
       </form>
     </section>

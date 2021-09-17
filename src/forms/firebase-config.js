@@ -15,4 +15,35 @@ import 'firebase/database'
 firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage(); 
 const database = firebase.database();
-export default {storage, database}
+
+// Using allimages in the storage database is done by below function of ListAll
+// I couldnt make it place in the images-context and will look it again in the future
+let imagesArray = [];
+function AllImages() {
+      const storageRef = firebase.storage().ref();
+      // Create a reference for folder 'formimages'
+      var listRef = storageRef.child("formimages");
+      // Find all the prefixes and items.
+      listRef
+        .listAll()
+        .then((res) => {
+          res.prefixes.forEach((folderRef) => {
+            // All the prefixes under listRef.
+            // You may call listAll() recursively on them.
+          });
+          res.items.forEach((itemRef) => {
+            // All the items under listRef.
+            itemRef.getDownloadURL().then((url) => {
+              imagesArray.push(url);
+              console.log(imagesArray);
+            });
+          });
+        })
+        .catch((error) => {
+          // Uh-oh, an error occurred!
+        });
+   }
+
+    AllImages();
+
+export { imagesArray, database, storage, firebase as default };

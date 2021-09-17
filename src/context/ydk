@@ -1,0 +1,94 @@
+// Create a reference with an initial file path and name
+storage.getStorage()
+        .getDownloadURL()
+        .ref('formimages/')
+          .then((urlData) => {
+            setUrl((prevState) => [...prevState, urlData]);
+                          console.log(urlData);
+
+});
+
+
+
+
+const downloadURL = () => {
+  //1.
+  let storageRef = storage.ref();
+  //2.
+  storageRef
+    .listAll()
+    .then(function (res) {
+      //3.
+      res.items.forEach((imageRef) => {
+        imageRef.getDownloadURL().then((url) => {
+          //4.
+          setAllImages((allImages) => [...allImages, url]);
+        });
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+        console.log(urls);
+        console.log(images);
+
+        console.log(allImages);
+
+
+const storage = storage.getStorage();
+  // Create a reference under which you want to list
+  const listRef = ref(storage, "imagesref");
+
+  // Find all the prefixes and items.
+  listAll(listRef)
+    .then((res) => {
+      res.prefixes.forEach((folderRef) => {
+        // All the prefixes under listRef.
+        // You may call listAll() recursively on them.
+        console.log(folderRef);
+      });
+      res.items.forEach((itemRef) => {
+        // All the items under listRef.
+        console.log(itemRef);
+      });
+    })
+    .catch((error) => {
+      // Uh-oh, an error occurred!
+    });
+
+
+  let imagesArray = [];
+  //LISTALL IMAGES
+  const ListAllImages = () => {
+    const storageRef = storage().ref();
+
+    // [START storage_list_all]
+    // Create a reference under which you want to list
+    var listRef = storageRef.child("formimages");
+
+    // Find all the prefixes and items.
+    listRef
+      .listAll()
+      .then((res) => {
+        res.prefixes.forEach((folderRef) => {
+          // All the prefixes under listRef.
+          // You may call listAll() recursively on them.
+        });
+        res.items.forEach((itemRef) => {
+          // All the items under listRef.
+          itemRef.getDownloadURL().then((url) => {
+            imagesArray.push(url);
+            setAllImages((prevState) => [...prevState, url]);
+            return imagesArray
+          });
+        });
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+    // [END storage_list_all]
+  };
+  ListAllImages()
+  console.log(imagesArray)
