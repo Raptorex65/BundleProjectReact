@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import BundleItems from "../components/bundle/bundleItems"; 
+//import BundleItems from "../components/bundle/bundleItems"; 
+import BundleItems from "../components/bundle/bundleItems";
 import SearchForm from '../components/bundle/searchform';
 //import Categories from '../components/categories' <Categories/>
 import Grid from '@material-ui/core/Grid';
@@ -7,6 +8,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useItemsContext } from '../context/items-context';
 //import Categories from '../components/Categories'
 import Categories from '../components/cat'
+//import CenteredGrid from '../components/bundle/bundleitems_mu';
+import SideBar from '../components/bundle/searchformnew'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -39,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const classes = useStyles();
   const { items, query, setQuery } = useItemsContext();
+  console.log(items)
   const [menuItems, setMenuItems] = useState(items);
   const [categories, setCategories] = useState(categoryList);
 
@@ -52,15 +57,13 @@ export default function Home() {
   };
   return (
     <div className={classes.root}>
-
       <Grid container spacing={3}>
         <Grid item xs={2}>
-                          <Categories categories={categories} filterItems={filterItems} />
-
+          <Categories categories={categories} filterItems={filterItems} />
         </Grid>
         <Grid item xs={10}>
           <SearchForm query={query} setQuery={setQuery} />
-          <BundleItems items={menuItems} />
+          <BundleItems menuItems={menuItems} items={items} />
         </Grid>
       </Grid>
     </div>

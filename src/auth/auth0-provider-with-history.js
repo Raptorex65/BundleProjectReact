@@ -9,11 +9,13 @@ const Auth0ProviderWithHistory = ({ children }) => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
   const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
-
-  const onRedirectCallback = (appState) => {
-    history.push(appState?.returnTo || window.location.pathname);
-  };
-
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.href = "https://www.exampleroute.com/pointofredirect"
+  );
+};
   return (
     <Auth0Provider
       domain={domain}

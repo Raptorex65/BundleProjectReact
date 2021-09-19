@@ -137,7 +137,7 @@ function FormFinal() {
                 {...register("Name")}
                 className={`form-control ${errors.Name ? "is-invalid" : ""}`}
               />
-              <div className="invalid-feedback">{errors.Name?.message}</div>
+              <div className="invalid-feedback">{errors.Name? "Name is invalid": ""}</div>
             </div>
             {/* CATEGORIES  */}
             <div className="form-group col-5">
@@ -175,7 +175,7 @@ function FormFinal() {
                 </option>
                 <option value="Auto Parts">Auto Parts</option>
               </select>
-              <div className="invalid-feedback">{errors.Category?.message}</div>
+              <div className="invalid-feedback">{errors.Category? "Category is invalid": ""}</div>
             </div>
             {/* DESCRIPTION  */}
             <div className="form-group col-10">
@@ -191,7 +191,7 @@ function FormFinal() {
                 rows="3"
               ></textarea>
               <div className="invalid-feedback">
-                {errors.Description?.message}
+                {errors.Description? "Description required" : ""}
               </div>
             </div>
             {/* ADDRESS  */}
@@ -204,7 +204,7 @@ function FormFinal() {
                 className={`form-control ${errors.Address ? "is-invalid" : ""}`}
                 id="inputAddress"
               />
-              <div className="invalid-feedback">{errors.Address?.message}</div>
+              <div className="invalid-feedback">{errors.Address? "Address is invalid" :""}</div>
             </div>
             {/* CANTON  */}
             <div className="form-row">
@@ -231,7 +231,7 @@ function FormFinal() {
                     );
                   })}
                 </select>
-                <div className="invalid-feedback">{errors.Canton?.message}</div>
+                <div className="invalid-feedback">{errors.Canton? "Canton is invalid":""}</div>
               </div>
               {/* CITY  */}
               <div className="form-group col-4">
@@ -256,7 +256,7 @@ function FormFinal() {
                       );
                     })}
                 </select>
-                <div className="invalid-feedback">{errors.City?.message}</div>
+                <div className="invalid-feedback">{errors.City? "City is invalid" :""}</div>
               </div>
               {/* POSTAL CODE  */}
               <div className="form-group col-3 md-3 mb-3">
@@ -271,7 +271,7 @@ function FormFinal() {
                   id="validationCustom05"
                 />
                 <div className="invalid-feedback">
-                  {errors.Postal_code?.message}
+                  {errors.Postal_code? "PostalCode is invalid" :""}
                 </div>
               </div>
             </div>
@@ -284,7 +284,7 @@ function FormFinal() {
                 {...register("Email")}
                 className={`form-control ${errors.Email ? "is-invalid" : ""}`}
               />
-              <div className="invalid-feedback">{errors.Email?.message}</div>
+              <div className="invalid-feedback">{errors.Email? "Email is invalid" :""}</div>
             </div>
             {/* PHONE  */}
             <div className="form-group col-5">
@@ -295,7 +295,7 @@ function FormFinal() {
                 {...register("Phone")}
                 className={`form-control ${errors.Phone ? "is-invalid" : ""}`}
               />
-              <div className="invalid-feedback">{errors.Phone?.message}</div>
+              <div className="invalid-feedback">{errors.Phone? "Phone is invalid" :""}</div>
             </div>
             {/*Accept Terms & Conditions*/}
             <div className="form-group col-3 form-check">
@@ -312,7 +312,7 @@ function FormFinal() {
                 }`}
               />
               <div className="invalid-feedback">
-                {errors.acceptTerms?.message}
+                {errors.acceptTerms? "AcceptTerms is required" :""}
               </div>
             </div>
 

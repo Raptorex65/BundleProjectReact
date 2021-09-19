@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "./bundle-logo.jpg"
+//import Image from "./bundle-logo.jpg"
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
@@ -27,7 +27,6 @@ console.log(item)
 */
 //const { urls, images } = useImagesContext()
     return (
-      <>
         <Card style={{ width: "15rem" }}>
           <Card.Img variant="top" src={imagesArray[0]} alt={"url"} />
           <Card.Body>
@@ -40,7 +39,6 @@ console.log(item)
             </Link>
           </Card.Body>
         </Card>
-      </>
     );
 }
 

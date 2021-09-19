@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useItemsContext } from "../../context/items-context";
 //import SingleItem from "./singleitem";
-import MediaCard from "./singleitem_mu";
+import SingleItem from './singleitem'
 import { Container, Row, Col } from "react-bootstrap";
 import Loading from '../loading'
 function BundleItems({ items }) {
@@ -28,7 +28,7 @@ function BundleItems({ items }) {
         {items.map((item) => {
           return (
             <Col md="auto" className="col-design">
-              <MediaCard key={item.id} {...item} />
+              <SingleItem key={item.id} {...item} />
             </Col>
           );
         })}

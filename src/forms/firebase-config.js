@@ -35,7 +35,7 @@ function AllImages() {
             // All the items under listRef.
             itemRef.getDownloadURL().then((url) => {
               imagesArray.push(url);
-              console.log(imagesArray);
+              //console.log(imagesArray);
             });
           });
         })
