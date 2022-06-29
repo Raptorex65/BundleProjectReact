@@ -1,7 +1,8 @@
 import React from "react";
-
+//import Slider from "./review_slider/slider"; <Slider />;
 const Footer = () => (
   <footer className="bg-light p-3 text-center">
+    
       <h5>
         &copy; {new Date().getFullYear()}
         <span> Bundle </span>

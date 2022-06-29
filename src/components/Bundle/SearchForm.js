@@ -1,19 +1,19 @@
-import React from 'react'
-import { useGlobalContext } from './context'
-const SearchForm = () => {
-  const { query, setQuery, error } = useGlobalContext()
+import React, {useState} from 'react'
+
+export default function SearchForm(props) {
+  
   return (
-    <form className='search-form' onSubmit={(e) => e.preventDefault()}>
-      <h2>search items</h2>
-      <input
-        type='text'
-        className='form-input'
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {error && <div className='error'>Item not found !</div>}
-    </form>
+    <section className='section search'>
+      <form className='search-form' onSubmit={(e) => e.preventDefault()}>
+          <input
+            type='text'
+            className='form-control'
+            id='name'
+            placeholder="SEARCH"
+            value={props.query}
+            onChange={(e) => props.setQuery(e.target.value)}
+          />
+      </form>
+    </section>
   )
 }
-
-export default SearchForm

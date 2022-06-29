@@ -4,17 +4,22 @@ import App from "./app";
 import { BrowserRouter as Router } from "react-router-dom";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history"
 import "./index.css";
-import { AppProvider } from './components/Bundle/context'
+import { ItemsProvider } from "./context/items-context";
+import { ImagesProvider } from "./context/images-context";
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import { FilterProvider } from './context/filter_context'
 
 ReactDOM.render(
-<React.StrictMode>
-<AppProvider>
-  <Router>
-    <Auth0ProviderWithHistory>
-      <App /> 
-    </Auth0ProviderWithHistory>
-  </Router>
-  </AppProvider>
+  <React.StrictMode>
+    <ItemsProvider>
+      <ImagesProvider>
+        <Auth0ProviderWithHistory>
+          <Router>
+            <App />
+          </Router>
+        </Auth0ProviderWithHistory>
+      </ImagesProvider>
+    </ItemsProvider>
   </React.StrictMode>,
   document.getElementById("root")
-)
+);
