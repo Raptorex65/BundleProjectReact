@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useImagesContext } from '../context/images-context';
 import ItemImages from '../forms/item-images'
-import AdvancedImageList from '../forms/imagesnew'
+import QuiltedImageList from "../forms/imagesnew2";
 const API_ENDPOINT_WHOLE ='http://localhost:3000/items/'
 
 const SingleDetail = () =>  {
@@ -57,7 +57,7 @@ return (
           back home
         </Link>
       </div>
-      <AdvancedImageList images={images} urls={urls} />
+      <QuiltedImageList images={images} urls={urls} />
     </article>
   </Wrapper>
 );
